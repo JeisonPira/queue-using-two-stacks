@@ -1,0 +1,64 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.8.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+group = 'com.hackerrank.test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+sourceSets {
+	acceptanceTest {
+		resources {
+			srcDirs 'src/acceptanceTest/resources'
+		}
+		java {
+			srcDirs 'src/acceptanceTest/java'
+		}
+	}
+}
+
+configurations.all {
+	exclude group: 'junit'
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// --- Test Dependencies ---
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+	testCompile "org.junit.jupiter:junit-jupiter:5.4.0"
+	testCompile 'org.mockito:mockito-junit-jupiter'
+
+	acceptanceTestCompile 'org.springframework.boot:spring-boot-starter-test'
+}
+
+task acceptanceTest (type: Test) {
+	group 'verification'
+
+	classpath = sourceSets.acceptanceTest.runtimeClasspath
+	classpath += sourceSets.acceptanceTest.resources
+	testClassesDirs =  sourceSets.acceptanceTest.output.classesDirs
+
+	systemProperty "spring.profiles.active", findProperty("spring.profiles.active")
+	systemProperty "test.rootUrl", findProperty("test.rootUrl")
+}
+
+acceptanceTest.dependsOn compileAcceptanceTestJava
