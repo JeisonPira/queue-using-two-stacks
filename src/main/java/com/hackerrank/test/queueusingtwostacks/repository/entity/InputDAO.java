@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @Table(name = "inputs")
-public class InputsDAO {
+public class InputDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +22,6 @@ public class InputsDAO {
     @Column(name = "result")
     private String result;
 
-    @OneToMany(mappedBy = "inputsDao", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "inputDAO", cascade = CascadeType.ALL)
     private Set<OperationsDAO> operationsDAOSet;
 }

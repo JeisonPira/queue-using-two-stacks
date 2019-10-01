@@ -1,10 +1,8 @@
-package com.hackerrank.test.queueusingtwostacks;
+package com.hackerrank.test.queueusingtwostacks.utils;
 
 import com.hackerrank.test.queueusingtwostacks.exception.TechnicalException;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Utils {
 

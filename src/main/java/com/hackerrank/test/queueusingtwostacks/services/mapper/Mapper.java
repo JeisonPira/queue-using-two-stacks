@@ -1,4 +1,6 @@
 package com.hackerrank.test.queueusingtwostacks.services.mapper;
 
-public interface Mapper {
+@FunctionalInterface
+public interface Mapper<I, O> {
+    O map(I object);
 }
