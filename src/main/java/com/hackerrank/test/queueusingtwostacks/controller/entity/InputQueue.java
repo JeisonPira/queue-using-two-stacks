@@ -8,8 +8,7 @@ import java.util.List;
 @Getter
 @Builder
 public class InputQueue {
-    
+
     private int numberOperations;
     private List<String> operations;
-    private String result;
 }
