@@ -2,10 +2,8 @@ package com.hackerrank.test.queueusingtwostacks.controller;
 
 import com.hackerrank.test.queueusingtwostacks.controller.entity.Tests;
 import com.hackerrank.test.queueusingtwostacks.controller.mapper.TestDOToTest;
-import com.hackerrank.test.queueusingtwostacks.domain.OperationDO;
 import com.hackerrank.test.queueusingtwostacks.domain.TestsDO;
 import com.hackerrank.test.queueusingtwostacks.services.ProofsService;
-import com.hackerrank.test.queueusingtwostacks.services.mapper.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +23,7 @@ public class ProofsController {
 
     @GetMapping
     public ResponseEntity getOperations(@RequestParam("limit") int limit, @RequestParam("page") int page) {
-        List<TestsDO> testsDOList = proofsService.getOperations(limit, page);
+        List<TestsDO> testsDOList = proofsService.getProofs(limit, page);
 
         List<Tests> testsList = testsDOList.stream()
                 .map(testDOToTest::map)

@@ -20,7 +20,7 @@ public class ManagementQueueController {
 
     @PostMapping(value = "/do-operations", produces = {"application/json"})
     public ResponseEntity doOperationsInQueue(@RequestBody InputQueue inputQueue) {
-        String result = "";
+        String result = "-";
         try {
             InputDO inputDO = managementQueueServiceImpl.saveInputOperations(inputQueue);
             result = managementQueueServiceImpl.doOperationsQueue(inputQueue);
@@ -29,7 +29,7 @@ public class ManagementQueueController {
         } catch (TechnicalException e) {
             return new ResponseEntity<>(MessageError.DATA_ERROR, HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>("{'result':'" + result + "'}", HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 }

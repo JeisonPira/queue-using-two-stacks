@@ -9,4 +9,5 @@ public class OperationDO {
 
     private int codeOperation;
     private int value;
+
 }

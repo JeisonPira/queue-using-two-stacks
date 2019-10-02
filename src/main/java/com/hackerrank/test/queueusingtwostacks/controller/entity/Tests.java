@@ -10,6 +10,6 @@ import java.util.List;
 public class Tests {
 
     private int numberOperations;
-    private List<Operation> operations;
+    private String operations;
     private String result;
 }

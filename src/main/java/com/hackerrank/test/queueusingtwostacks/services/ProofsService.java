@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ProofsService {
 
-    List<TestsDO> getOperations(int limit, int page);
+    List<TestsDO> getProofs(int limit, int page);
 }

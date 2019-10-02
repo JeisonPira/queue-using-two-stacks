@@ -25,4 +25,10 @@ public class OperationsDAO {
     @Column(name = "operation_value")
     private int operationValue;
 
+    @Override
+    public String toString() {
+        String operationValueValid = operationValue == 0 ? "": String.valueOf(operationValue);
+        return codeOperation + " " + operationValueValid;
+    }
+
 }

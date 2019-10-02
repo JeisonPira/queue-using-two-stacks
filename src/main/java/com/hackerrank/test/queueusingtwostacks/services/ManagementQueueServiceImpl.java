@@ -23,8 +23,9 @@ public class ManagementQueueServiceImpl implements ManagementQueueService {
     private final Mapper inputDAOToInputDOMapper;
 
     public InputDO saveInputOperations(InputQueue inputQueue) throws TechnicalException {
-        InputDAO inputDAO = saveInputDao(inputQueue.getNumberOperations());
+        InputDAO inputDAO = null;
         if (Utils.validOperations(inputQueue.getOperations())) {
+            inputDAO = saveInputDao(inputQueue.getNumberOperations());
             for (String operation : inputQueue.getOperations()) {
                 String[] values = operation.split("\\s+");
                 saveOperationsDao(inputDAO, values);
